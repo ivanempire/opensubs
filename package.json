@@ -1,0 +1,11 @@
+{
+  "name": "opensubs",
+  "version": "0.9.0",
+  "description": "An NPM library for calling the v2 OpenSubtitles API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Melnikov",
+  "license": "ISC"
+}
