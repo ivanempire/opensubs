@@ -3,9 +3,7 @@
   "version": "0.9.0",
   "description": "An NPM module for calling the OpenSubtitles v2 API",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": { },
   "author": "Ivan Melnikov",
   "license": "ISC"
 }
