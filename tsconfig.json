@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "noImplicitAny": true,
+    "strict": true
+  },
+}
