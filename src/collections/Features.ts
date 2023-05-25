@@ -1,5 +1,13 @@
-import BaseClass from "./BaseClass";
+import NetworkRequestHandler from "../RequestMaker";
 
-class Features extends BaseClass {
-
+abstract class EndpointCategory {
+    protected networkRequestHandler = NetworkRequestHandler.getInstance();
 }
+
+class Features extends EndpointCategory {
+    constructor() {
+        super();
+    }
+}
+
+export default Features;

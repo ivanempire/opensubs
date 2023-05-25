@@ -1,5 +1,5 @@
-import BaseClass from "./BaseClass";
-
-class Models extends BaseClass {
+class Models {
 
 }
+
+export default Models;
