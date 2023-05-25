@@ -1,5 +1,5 @@
-import BaseClass from "./BaseClass";
-
-class Subtitles extends BaseClass {
+class Subtitles {
 
 }
+
+export default Subtitles;

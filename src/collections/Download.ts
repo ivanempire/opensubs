@@ -1,5 +1,5 @@
-import BaseClass from "./BaseClass";
-
-class Download extends BaseClass {
+class Download {
 
 }
+
+export default Download;

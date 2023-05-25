@@ -1,13 +1,11 @@
-import BaseClass from "./BaseClass";
+import CredentialManager from "../CredentialManager";
 
-class Authentication extends BaseClass {
+class Authentication {
 
-    ENDPOINT_URL: string;
+    private credentialManager: CredentialManager
 
-    constructor() {
-        super();
-        // Authentication is just at /login and /logout
-        this.ENDPOINT_URL = "";
+    constructor(credentialManager: CredentialManager) {
+        this.credentialManager = credentialManager;
     }
 
     async login(): Promise<any> {
@@ -28,3 +26,5 @@ class Authentication extends BaseClass {
         );
     }
 }
+
+export default Authentication;
