@@ -1,8 +1,4 @@
-import NetworkRequestHandler from "../RequestMaker";
-
-abstract class EndpointCategory {
-    protected networkRequestHandler = NetworkRequestHandler.getInstance();
-}
+import EndpointCategory from "../EndpointCategory";
 
 class Features extends EndpointCategory {
     constructor() {

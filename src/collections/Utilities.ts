@@ -1,5 +1,7 @@
-import BaseClass from "./BaseClass";
+import EndpointCategory from "../EndpointCategory";
 
-class Utilities extends BaseClass {
-
+class Utilities extends EndpointCategory {
+    constructor() {
+        super();
+    }
 }

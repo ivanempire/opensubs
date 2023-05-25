@@ -1,10 +1,12 @@
 import CredentialManager from "../CredentialManager";
+import EndpointCategory from "../EndpointCategory";
 
-class Authentication {
+class Authentication extends EndpointCategory {
 
     private credentialManager: CredentialManager
 
     constructor(credentialManager: CredentialManager) {
+        super();
         this.credentialManager = credentialManager;
     }
 
