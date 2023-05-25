@@ -2,10 +2,10 @@ import Features from "./collections/Features";
 import Discover from "./collections/Discover";
 import Download from "./collections/Download";
 import Subtitles from "./collections/Subtitles";
-import NetworkRequestHandler from "./RequestMaker";
+import Information from "./collections/Information";
 import CredentialManager from "./CredentialManager";
 import Authentication from "./collections/Authentication";
-import Information from "./collections/Information";
+import NetworkRequestHandler from "./NetworkRequestHandler";
 
 class OpenSubtitles {
 
@@ -31,4 +31,4 @@ class OpenSubtitles {
     }
 }
 
-export default OpenSubtitles;
+module.exports = OpenSubtitles;

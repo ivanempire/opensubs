@@ -1,7 +1,12 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
-    "noImplicitAny": true,
-    "strict": true
+    "declaration": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "strict": true,
+    "noImplicitAny": false,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
   },
 }

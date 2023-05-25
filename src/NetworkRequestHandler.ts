@@ -1,3 +1,4 @@
+import axios from "axios";
 import CredentialManager from "./CredentialManager";
 
 class NetworkRequestHandler {
@@ -23,8 +24,16 @@ class NetworkRequestHandler {
         return NetworkRequestHandler.instance;
     }
 
-    performNetworkCall = async(): Promise<any> => {
-
+    performNetworkCall = async(httpMethod: HttpMethod, endpoint: string, args: any): Promise<any> => {
+        console.log(httpMethod);
+        // axios({
+        //     method: httpMethod,
+        //     url: '/user/12345',
+        //     data: {
+        //         firstName: 'Fred',
+        //         lastName: 'Flintstone'
+        //     }
+        // });
     }
 }
 

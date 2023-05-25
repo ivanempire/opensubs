@@ -1,5 +1,5 @@
-import CredentialManager from "../CredentialManager";
 import EndpointCategory from "../EndpointCategory";
+import CredentialManager from "../CredentialManager";
 
 class Authentication extends EndpointCategory {
 
@@ -11,7 +11,7 @@ class Authentication extends EndpointCategory {
     }
 
     async login(): Promise<any> {
-        const requestResponse = await this.performNetworkCall(
+        const requestResponse = await this.networkRequestHandler.performNetworkCall(
             HttpMethod.POST,
             "/login",
             {
@@ -22,7 +22,7 @@ class Authentication extends EndpointCategory {
     }
 
     async logout(): Promise<any> {
-        const requestResponse = await this.performNetworkCall(
+        const requestResponse = await this.networkRequestHandler.performNetworkCall(
             HttpMethod.DELETE,
             "/logout"
         );
