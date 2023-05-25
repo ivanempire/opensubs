@@ -1,7 +1,10 @@
 import axios from "axios";
 import CredentialManager from "./CredentialManager";
+import * as net from "net";
 
 class NetworkRequestHandler {
+
+    // https://api.opensubtitles.com/api/v1/login
 
     private static instance: NetworkRequestHandler
     private credentialManager: CredentialManager;
@@ -26,14 +29,15 @@ class NetworkRequestHandler {
 
     performNetworkCall = async(httpMethod: HttpMethod, endpoint: string, args: any): Promise<any> => {
         console.log(httpMethod);
-        // axios({
-        //     method: httpMethod,
-        //     url: '/user/12345',
-        //     data: {
-        //         firstName: 'Fred',
-        //         lastName: 'Flintstone'
-        //     }
-        // });
+        const networkCall = await axios({
+            method: httpMethod,
+            url: "https://api.opensubtitles.com/api/v1/login",
+            data: {
+                username: "ivanempire",
+                password: "password"
+            }
+        });
+        console.log(networkCall);
     }
 }
 

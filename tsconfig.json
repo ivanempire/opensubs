@@ -8,5 +8,10 @@
     "noImplicitAny": false,
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "outDir": "dist/types",
+    "rootDir": "src",
+    "sourceMap": true,
   },
+  "include": ["src/**/*"],
+  "references": []
 }

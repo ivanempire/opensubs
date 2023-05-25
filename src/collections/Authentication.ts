@@ -22,10 +22,10 @@ class Authentication extends EndpointCategory {
     }
 
     async logout(): Promise<any> {
-        const requestResponse = await this.networkRequestHandler.performNetworkCall(
-            HttpMethod.DELETE,
-            "/logout"
-        );
+        // const requestResponse = await this.networkRequestHandler.performNetworkCall(
+        //     HttpMethod.DELETE,
+        //     "/logout"
+        // );
     }
 }
 

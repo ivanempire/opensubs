@@ -31,4 +31,4 @@ class OpenSubtitles {
     }
 }
 
-module.exports = OpenSubtitles;
+export default OpenSubtitles;
