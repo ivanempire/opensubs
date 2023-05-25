@@ -1,5 +1,6 @@
-import EndpointCategory from "../EndpointCategory";
-import CredentialManager from "../CredentialManager";
+import { HttpMethod } from "../core/HttpMethod";
+import EndpointCategory from "./EndpointCategory";
+import CredentialManager from "../core/CredentialManager";
 
 class Authentication extends EndpointCategory {
 
@@ -14,18 +15,14 @@ class Authentication extends EndpointCategory {
         const requestResponse = await this.networkRequestHandler.performNetworkCall(
             HttpMethod.POST,
             "/login",
-            {
-                "username": "",
-                "password": ""
-            }
         );
     }
 
     async logout(): Promise<any> {
-        // const requestResponse = await this.networkRequestHandler.performNetworkCall(
-        //     HttpMethod.DELETE,
-        //     "/logout"
-        // );
+        const requestResponse = await this.networkRequestHandler.performNetworkCall(
+            HttpMethod.DELETE,
+            "/logout"
+        );
     }
 }
 

@@ -1,13 +1,12 @@
 import axios from "axios";
+import { HttpMethod } from "./HttpMethod";
 import CredentialManager from "./CredentialManager";
-import * as net from "net";
 
 class NetworkRequestHandler {
 
-    // https://api.opensubtitles.com/api/v1/login
-
     private static instance: NetworkRequestHandler
     private credentialManager: CredentialManager;
+    private static SERVER_BASE_URL = "https://api.opensubtitles.com/api/v1"
 
     private constructor(credentialManager: CredentialManager) {
         this.credentialManager = credentialManager;
@@ -27,17 +26,23 @@ class NetworkRequestHandler {
         return NetworkRequestHandler.instance;
     }
 
-    performNetworkCall = async(httpMethod: HttpMethod, endpoint: string, args: any): Promise<any> => {
-        console.log(httpMethod);
+    performNetworkCall = async(httpMethod: HttpMethod, endpoint: string, args?: any): Promise<any> => {
+        const userCreds = this.credentialManager.getUserCredentials();
         const networkCall = await axios({
             method: httpMethod,
-            url: "https://api.opensubtitles.com/api/v1/login",
+            headers: {
+                "Content-Type": "application/json",
+                "Api-Key": userCreds.apiKey,
+            },
             data: {
-                username: "ivanempire",
-                password: "password"
-            }
+                username: userCreds.username,
+                password: userCreds.password
+            },
+            url: NetworkRequestHandler.SERVER_BASE_URL + endpoint
         });
-        console.log(networkCall);
+        if (networkCall.data.status == "200") {
+            this.credentialManager.updateToken(networkCall.data.token);
+        }
     }
 }
 

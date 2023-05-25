@@ -1,4 +1,4 @@
-import NetworkRequestHandler from "./NetworkRequestHandler";
+import NetworkRequestHandler from "../core/NetworkRequestHandler";
 
 abstract class EndpointCategory {
     protected networkRequestHandler = NetworkRequestHandler.getInstance();

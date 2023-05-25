@@ -1,4 +1,4 @@
-import EndpointCategory from "../EndpointCategory";
+import EndpointCategory from "./EndpointCategory";
 
 
 class Subtitles extends EndpointCategory {

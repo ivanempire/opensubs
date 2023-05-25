@@ -1,1 +1,1 @@
-export { default } from "./OpenSubtitles";
+export * from "./OpenSubtitles";

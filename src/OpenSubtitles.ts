@@ -1,13 +1,13 @@
-import Features from "./collections/Features";
-import Discover from "./collections/Discover";
-import Download from "./collections/Download";
-import Subtitles from "./collections/Subtitles";
-import Information from "./collections/Information";
-import CredentialManager from "./CredentialManager";
-import Authentication from "./collections/Authentication";
-import NetworkRequestHandler from "./NetworkRequestHandler";
+import Features from "./endpoints/Features";
+import Discover from "./endpoints/Discover";
+import Download from "./endpoints/Download";
+import Subtitles from "./endpoints/Subtitles";
+import Information from "./endpoints/Information";
+import CredentialManager from "./core/CredentialManager";
+import Authentication from "./endpoints/Authentication";
+import NetworkRequestHandler from "./core/NetworkRequestHandler";
 
-class OpenSubtitles {
+export class OpenSubtitles {
 
     private networkRequestHandler: NetworkRequestHandler
 
@@ -18,8 +18,8 @@ class OpenSubtitles {
     features: Features
     subtitles: Subtitles
     
-    constructor(username: string, password: string) {
-        const credentialManager = new CredentialManager(username, password)
+    constructor(username: string, password: string, apiKey: string) {
+        const credentialManager = new CredentialManager(username, password, apiKey)
         this.networkRequestHandler = NetworkRequestHandler.instantiate(credentialManager);
 
         this.auth = new Authentication(credentialManager);
@@ -30,5 +30,3 @@ class OpenSubtitles {
         this.subtitles = new Subtitles();
     }
 }
-
-export default OpenSubtitles;
