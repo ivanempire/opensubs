@@ -84,7 +84,7 @@ describe("OpenSubtitles", () => {
         expect(value.data).toHaveProperty("output_formats");
         expect(value.data.output_formats).toBeInstanceOf(Array);
         expect(value.data.output_formats.length).toBe(6);
-    }, 10000);
+    });
 
     it("correctly queries Information.getLanguages() endpoint", async() => {
         const sut = setupClient();
@@ -93,7 +93,7 @@ describe("OpenSubtitles", () => {
         expect(value).toHaveProperty("data");
         expect(value.data).toBeInstanceOf(Array);
         expect(value.data.length).toBe(76);
-    }, 10000);
+    });
 
     it("correctly queries Information.getUserInformation() endpoint", async() => {
         const sut = setupClient();
@@ -112,7 +112,7 @@ describe("OpenSubtitles", () => {
         expect(responseData).toHaveProperty("allowed_downloads");
         expect(responseData).toHaveProperty("remaining_downloads");
         expect(responseData).toHaveProperty("allowed_translations");
-    }, 10000);
+    });
 
     it("correctly queries Utilities.guessIt endpoint", async() => {
         const sut = setupClient();
@@ -125,7 +125,7 @@ describe("OpenSubtitles", () => {
         expect(value).toHaveProperty("mimetype");
         expect(value).toHaveProperty("container");
         expect(value).toHaveProperty("alternative_title");
-    }, 10000);
+    });
 
     function setupClient() {
         return new OpenSubtitles(process.env.OPENSUBS_USERNAME ?? "",

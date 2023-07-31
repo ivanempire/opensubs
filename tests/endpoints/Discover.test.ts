@@ -14,7 +14,7 @@ describe("Discover", () => {
         expect(popularResponse.value).toHaveProperty("id");
         expect(popularResponse.value).toHaveProperty("type");
         expect(popularResponse.value).toHaveProperty("attributes");
-    }, 10000);
+    });
 
     it("correctly queries popular features from primary server", async() => {
         const sut = new Discover(new NetworkRequestHandler(testCredentialManager, Servers.PRIMARY));
@@ -27,7 +27,7 @@ describe("Discover", () => {
         expect(popularResponse1.value.data[0]).toHaveProperty("id");
         expect(popularResponse1.value.data[0]).toHaveProperty("type");
         expect(popularResponse1.value.data[0]).toHaveProperty("attributes");
-    }, 10000);
+    });
 
     it("correctly queries popular features for multiple languages", async() => {
         const sut = new Discover(new NetworkRequestHandler(testCredentialManager, Servers.PRIMARY));
@@ -49,7 +49,7 @@ describe("Discover", () => {
         expect(popularResponse3.value.data[0]).toHaveProperty("id");
         expect(popularResponse3.value.data[0]).toHaveProperty("type");
         expect(popularResponse3.value.data[0]).toHaveProperty("attributes");
-    }, 10000);
+    });
 
     it("correctly queries latest subtitles from mock server", async() => {
         const sut = new Discover(new NetworkRequestHandler(testCredentialManager, Servers.MOCK));
@@ -60,7 +60,7 @@ describe("Discover", () => {
         expect(latestResponse.value).toHaveProperty("total_count");
         expect(latestResponse.value).toHaveProperty("page");
         expect(latestResponse.value).toHaveProperty("data");
-    }, 10000);
+    });
 
     it("correctly queries latest subtitles from primary server", async() => {
         const sut = new Discover(new NetworkRequestHandler(testCredentialManager, Servers.PRIMARY));
@@ -71,7 +71,7 @@ describe("Discover", () => {
         expect(latestResponse.value).toHaveProperty("total_count");
         expect(latestResponse.value).toHaveProperty("page");
         expect(latestResponse.value).toHaveProperty("data");
-    }, 10000);
+    });
 
     it("correctly queries most downloaded subtitles from mock server", async() => {
         const sut = new Discover(new NetworkRequestHandler(testCredentialManager, Servers.MOCK));
@@ -83,7 +83,7 @@ describe("Discover", () => {
         expect(latestResponse.value).toHaveProperty("page");
         expect(latestResponse.value).toHaveProperty("data");
         expect(latestResponse.value.data).toBeInstanceOf(Array);
-    }, 10000);
+    });
 
     it("correctly queries most downloaded subtitles from primary server", async() => {
         const sut = new Discover(new NetworkRequestHandler(testCredentialManager, Servers.PRIMARY));
@@ -95,5 +95,5 @@ describe("Discover", () => {
         expect(latestResponse.value).toHaveProperty("page");
         expect(latestResponse.value).toHaveProperty("data");
         expect(latestResponse.value.data).toBeInstanceOf(Array);
-    }, 10000);
+    });
 });
