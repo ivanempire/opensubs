@@ -7,7 +7,7 @@ import {Servers} from "../../src/constants/Servers";
 describe("Information", () => {
 
     it("correctly returns subtitle format response", async() => {
-        const sut = new Information(new NetworkRequestHandler(testCredentialManager, Servers.MOCK));
+        const sut = new Information(testCredentialManager, new NetworkRequestHandler(testCredentialManager, Servers.MOCK));
         const formatResponse = await sut.getSubtitleFormats();
         expect(formatResponse.ok).toBeTruthy();
         expect(formatResponse.value).toHaveProperty("data");
@@ -16,7 +16,7 @@ describe("Information", () => {
     });
 
     it("correctly returns subtitle languages response", async() => {
-        const sut = new Information(new NetworkRequestHandler(testCredentialManager, Servers.MOCK));
+        const sut = new Information(testCredentialManager, new NetworkRequestHandler(testCredentialManager, Servers.MOCK));
         const formatResponse = await sut.getLanguages();
         expect(formatResponse.ok).toBeTruthy();
         expect(formatResponse.value).toHaveProperty("data");
