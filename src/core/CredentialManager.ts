@@ -1,4 +1,4 @@
-import { UserCredentials } from "./UserCredentials";
+import { UserCredentials } from "./types";
 
 class CredentialManager {
 
