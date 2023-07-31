@@ -26,7 +26,7 @@ export class OpenSubtitles {
         this.auth = new Authentication(credentialManager, networkRequestHandler);
         this.info = new Information(networkRequestHandler);
         this.discover = new Discover(networkRequestHandler);
-        this.download = new Download(networkRequestHandler);
+        this.download = new Download(credentialManager, networkRequestHandler);
         this.features = new Features(networkRequestHandler);
         this.subtitles = new Subtitles(networkRequestHandler);
         this.utilities = new Utilities(networkRequestHandler);

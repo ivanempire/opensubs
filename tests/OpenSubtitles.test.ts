@@ -24,6 +24,27 @@ describe("OpenSubtitles", () => {
         expect(value.message).toBe("token successfully destroyed");
     });
 
+    it("correctly queries Download.requestDownload() endpoint", async() => {
+        const sut = setupClient();
+        await sut.auth.login();
+
+        const { value } = await sut.download.requestDownload({
+            file_id: 250
+        });
+
+        expect(value).toHaveProperty("link");
+        expect(value).toHaveProperty("file_name");
+        expect(value).toHaveProperty("requests");
+        expect(value).toHaveProperty("remaining");
+        expect(value).toHaveProperty("message");
+        expect(value).toHaveProperty("reset_time");
+        expect(value).toHaveProperty("reset_time_utc");
+        expect(value).toHaveProperty("uk");
+        expect(value).toHaveProperty("uid");
+        expect(value).toHaveProperty("ts");
+        expect(value.file_name).toBe("Castle.Rock.S01E08.Past Perfect.WEBRip.x264-TBS.srt");
+    });
+
     it("correctly queries Discover.getPopularFeatures() endpoint", async() => {
         const sut = setupClient();
         const { value } = await sut.discover.getPopularFeatures("es", "tvshow");

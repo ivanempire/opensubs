@@ -2,6 +2,7 @@ import NetworkRequestHandler from "../core/NetworkRequestHandler";
 import {HttpMethod} from "../core/HttpMethod";
 import {NetworkHeaders} from "../constants/NetworkHeaders";
 import ACCEPT_JSON_EXAMPLE = NetworkHeaders.ACCEPT_JSON_EXAMPLE;
+import { encodeObject } from "../core/utils";
 
 class Features {
 
@@ -15,20 +16,10 @@ class Features {
     findFeatures = async(params: FindFeaturesParams): Promise<any> => {
         return await this.networkRequestHandler.performNetworkCall(
             HttpMethod.GET,
-            "/features?" + this.toUrlEncodedParams(params),
+            "/features?" + encodeObject(params),
             true,
             ACCEPT_JSON_EXAMPLE
         );
-    }
-
-    toUrlEncodedParams = (data: FindFeaturesParams): string => {
-        const params: string[] = [];
-        for (const key in data) {
-            if (data.hasOwnProperty(key) && data[key] !== null && data[key] !== undefined) {
-                params.push(`${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`);
-            }
-        }
-        return params.join("&");
     }
 }
 

@@ -89,7 +89,6 @@ describe("Discover", () => {
         const sut = new Discover(new NetworkRequestHandler(testCredentialManager, Servers.PRIMARY));
 
         const latestResponse = await sut.getMostDownloaded("ru", "movie");
-        console.log(latestResponse);
         expect(latestResponse.ok).toBeTruthy();
         expect(latestResponse.value).toHaveProperty("total_pages");
         expect(latestResponse.value).toHaveProperty("total_count");
