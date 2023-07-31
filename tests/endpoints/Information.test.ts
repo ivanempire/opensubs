@@ -321,7 +321,7 @@ describe("Information", () => {
     });
 
     it("correctly returns user information response", async() => {
-        const sut = new Information(new NetworkRequestHandler(testCredentialManager, Servers.MOCK));
+        const sut = new Information(testCredentialManager, new NetworkRequestHandler(testCredentialManager, Servers.MOCK));
         const formatResponse = await sut.getUserInformation();
         expect(formatResponse.ok).toBeTruthy();
         expect(formatResponse.value).toHaveProperty("data");

@@ -3,12 +3,15 @@ import { NetworkHeaders } from "../constants/NetworkHeaders";
 import ACCEPT_JSON = NetworkHeaders.ACCEPT_JSON;
 import ACCEPT_JSON_EXAMPLE = NetworkHeaders.ACCEPT_JSON_EXAMPLE;
 import NetworkRequestHandler from "../core/NetworkRequestHandler";
+import CredentialManager from "../core/CredentialManager";
 
 class Information {
 
+    private credentialManager: CredentialManager
     private networkRequestHandler: NetworkRequestHandler;
 
-    constructor(networkRequestHandler: NetworkRequestHandler) {
+    constructor(credentialManager: CredentialManager, networkRequestHandler: NetworkRequestHandler) {
+        this.credentialManager = credentialManager;
         this.networkRequestHandler = networkRequestHandler;
     }
 
@@ -35,7 +38,10 @@ class Information {
             HttpMethod.GET,
             "/infos/user",
             true,
-            ACCEPT_JSON
+            {
+                ...ACCEPT_JSON,
+                "Authorization": `Bearer: ${this.credentialManager.getUserCredentials().jwt}`
+            }
         );
     }
 }

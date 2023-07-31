@@ -97,12 +97,21 @@ describe("OpenSubtitles", () => {
 
     it("correctly queries Information.getUserInformation() endpoint", async() => {
         const sut = setupClient();
+        await sut.auth.login();
 
         const { value } = await sut.info.getUserInformation();
-        console.log(value);
-        // expect(value).toHaveProperty("data");
-        // expect(value.data).toBeInstanceOf(Array);
-        // expect(value.data.length).toBe(76);
+        expect(value).toHaveProperty("data");
+
+        const responseData = value.data;
+        expect(responseData).toHaveProperty("vip");
+        expect(responseData).toHaveProperty("level");
+        expect(responseData).toHaveProperty("user_id");
+        expect(responseData).toHaveProperty("username");
+        expect(responseData).toHaveProperty("ext_installed");
+        expect(responseData).toHaveProperty("downloads_count");
+        expect(responseData).toHaveProperty("allowed_downloads");
+        expect(responseData).toHaveProperty("remaining_downloads");
+        expect(responseData).toHaveProperty("allowed_translations");
     }, 10000);
 
     it("correctly queries Utilities.guessIt endpoint", async() => {
