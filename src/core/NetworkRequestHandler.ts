@@ -1,47 +1,39 @@
 import axios from "axios";
 import { HttpMethod } from "./HttpMethod";
 import CredentialManager from "./CredentialManager";
+import {Result} from "./Result";
+import {Servers} from "../constants/Servers";
 
 class NetworkRequestHandler {
 
-    private static instance: NetworkRequestHandler
     private credentialManager: CredentialManager;
-    private static SERVER_BASE_URL = "https://api.opensubtitles.com/api/v1"
+    private readonly serverAddress: string;
 
-    private constructor(credentialManager: CredentialManager) {
+    constructor(credentialManager: CredentialManager, endpoint?: Servers) {
         this.credentialManager = credentialManager;
-    }
-
-    public static instantiate(credentialManager: CredentialManager): NetworkRequestHandler {
-        if (!NetworkRequestHandler.instance) {
-            NetworkRequestHandler.instance = new NetworkRequestHandler(credentialManager);
+        if (endpoint == null) {
+            this.serverAddress = Servers.PRIMARY;
+        } else {
+            this.serverAddress = endpoint;
         }
-        return NetworkRequestHandler.instance;
     }
 
-    public static getInstance(): NetworkRequestHandler {
-        if (!NetworkRequestHandler.instance) {
-            throw new Error("Null instance, did you call instantiate(credentialManager: CredentialManager) first?");
-        }
-        return NetworkRequestHandler.instance;
-    }
+    performNetworkCall = async(httpMethod: HttpMethod, endpoint: string, includeApiKey: boolean, headers: object, data?: object): Promise<Result<any>> => {
+        const requestHeaders = {
+            ...headers,
+            "Api-Key": includeApiKey ? this.credentialManager.getUserCredentials().apiKey : undefined,
+        };
 
-    performNetworkCall = async(httpMethod: HttpMethod, endpoint: string, args?: any): Promise<any> => {
-        const userCreds = this.credentialManager.getUserCredentials();
-        const networkCall = await axios({
-            method: httpMethod,
-            headers: {
-                "Content-Type": "application/json",
-                "Api-Key": userCreds.apiKey,
-            },
-            data: {
-                username: userCreds.username,
-                password: userCreds.password
-            },
-            url: NetworkRequestHandler.SERVER_BASE_URL + endpoint
-        });
-        if (networkCall.data.status == "200") {
-            this.credentialManager.updateToken(networkCall.data.token);
+        try {
+            const networkCall = await axios({
+                method: httpMethod,
+                headers: requestHeaders,
+                url: this.serverAddress + endpoint,
+                data: data ? data : null
+            });
+            return { ok: true, value: networkCall.data };
+        } catch (error: any) {
+            return { ok: false, error: error };
         }
     }
 }

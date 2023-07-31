@@ -13,7 +13,7 @@ class CredentialManager {
         }
     }
 
-    updateToken = (newToken: string) => {
+    updateToken = (newToken: string|null) => {
         this.userCredentials = { ...this.userCredentials, jwt: newToken };
     }
 

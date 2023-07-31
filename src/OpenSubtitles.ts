@@ -6,10 +6,10 @@ import Information from "./endpoints/Information";
 import CredentialManager from "./core/CredentialManager";
 import Authentication from "./endpoints/Authentication";
 import NetworkRequestHandler from "./core/NetworkRequestHandler";
+import {Servers} from "./constants/Servers";
+import Utilities from "./endpoints/Utilities";
 
 export class OpenSubtitles {
-
-    private networkRequestHandler: NetworkRequestHandler
 
     info: Information
     auth: Authentication
@@ -17,16 +17,18 @@ export class OpenSubtitles {
     download: Download
     features: Features
     subtitles: Subtitles
+    utilities: Utilities
     
-    constructor(username: string, password: string, apiKey: string) {
+    constructor(username: string, password: string, apiKey: string, server?: Servers) {
         const credentialManager = new CredentialManager(username, password, apiKey)
-        this.networkRequestHandler = NetworkRequestHandler.instantiate(credentialManager);
+        const networkRequestHandler = new NetworkRequestHandler(credentialManager, server);
 
-        this.auth = new Authentication(credentialManager);
-        this.info = new Information();
-        this.discover = new Discover();
-        this.download = new Download();
-        this.features = new Features();
-        this.subtitles = new Subtitles();
+        this.auth = new Authentication(credentialManager, networkRequestHandler);
+        this.info = new Information(networkRequestHandler);
+        this.discover = new Discover(networkRequestHandler);
+        this.download = new Download(networkRequestHandler);
+        this.features = new Features(networkRequestHandler);
+        this.subtitles = new Subtitles(networkRequestHandler);
+        this.utilities = new Utilities(networkRequestHandler);
     }
 }
