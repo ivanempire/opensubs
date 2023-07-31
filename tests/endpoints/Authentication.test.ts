@@ -1,5 +1,5 @@
 import {describe, expect, it} from "@jest/globals";
-import testCredentialManager from "./TestCredentialManager";
+import testCredentialManager from "../core/TestCredentialManager";
 import Authentication from "../../src/endpoints/Authentication";
 import NetworkRequestHandler from "../../src/core/NetworkRequestHandler";
 import {Servers} from "../../src/constants/Servers";

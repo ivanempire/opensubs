@@ -72,4 +72,29 @@ describe("Discover", () => {
         expect(latestResponse.value).toHaveProperty("page");
         expect(latestResponse.value).toHaveProperty("data");
     }, 10000);
+
+    it("correctly queries most downloaded subtitles from mock server", async() => {
+        const sut = new Discover(new NetworkRequestHandler(testCredentialManager, Servers.MOCK));
+
+        const latestResponse = await sut.getMostDownloaded("en", "tvshow");
+        expect(latestResponse.ok).toBeTruthy();
+        expect(latestResponse.value).toHaveProperty("total_pages");
+        expect(latestResponse.value).toHaveProperty("total_count");
+        expect(latestResponse.value).toHaveProperty("page");
+        expect(latestResponse.value).toHaveProperty("data");
+        expect(latestResponse.value.data).toBeInstanceOf(Array);
+    }, 10000);
+
+    it("correctly queries most downloaded subtitles from primary server", async() => {
+        const sut = new Discover(new NetworkRequestHandler(testCredentialManager, Servers.PRIMARY));
+
+        const latestResponse = await sut.getMostDownloaded("ru", "movie");
+        console.log(latestResponse);
+        expect(latestResponse.ok).toBeTruthy();
+        expect(latestResponse.value).toHaveProperty("total_pages");
+        expect(latestResponse.value).toHaveProperty("total_count");
+        expect(latestResponse.value).toHaveProperty("page");
+        expect(latestResponse.value).toHaveProperty("data");
+        expect(latestResponse.value.data).toBeInstanceOf(Array);
+    }, 10000);
 });

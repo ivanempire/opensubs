@@ -21,10 +21,6 @@ class Discover {
         );
     }
 
-    /**
-     *   --header 'Accept: application/json, example' \
-     *   --header 'Api-Key: '
-     */
     getLatestSubtitles = async(languages: string, type: string): Promise<any> => {
         return await this.networkRequestHandler.performNetworkCall(
             HttpMethod.GET,
@@ -39,7 +35,7 @@ class Discover {
             HttpMethod.GET,
             "/discover/most_downloaded?" + `languages=${encodeURIComponent(languages)}&type=${type}`,
             true,
-            {...ACCEPT_JSON_EXAMPLE}
+            {...ACCEPT_JSON}
         );
     }
 }
