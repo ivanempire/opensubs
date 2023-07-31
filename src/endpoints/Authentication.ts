@@ -16,22 +16,13 @@ class Authentication {
         this.networkRequestHandler = networkRequestHandler;
     }
 
-    /**
-     *   --header 'Accept: application/json' \
-     *   --header 'Api-Key: ' \
-     *   --header 'Content-Type: application/json' \
-     *   --data '{
-     *   "username": "string",
-     *   "password": "string"
-     * }'
-     */
     async login(): Promise<any> {
         const userCredentials = this.credentialManager.getUserCredentials();
         try {
             const loginResponse: Result<any> = await this.networkRequestHandler.performNetworkCall(
                 HttpMethod.POST,
                 "/login",
-                false,
+                true,
                 {
                     ...ACCEPT_JSON, ...CONTENT_TYPE_JSON
                 },
@@ -55,7 +46,7 @@ class Authentication {
             const logoutResponse: Result<any> = await this.networkRequestHandler.performNetworkCall(
                 HttpMethod.DELETE,
                 "/logout",
-                false,
+                true,
                 {
                     ...ACCEPT_JSON,
                     "Authorization": `Bearer: ${this.credentialManager.getUserCredentials().jwt}`

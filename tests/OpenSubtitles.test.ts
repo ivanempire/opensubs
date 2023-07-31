@@ -4,6 +4,26 @@ import {OpenSubtitles} from "../src";
 
 describe("OpenSubtitles", () => {
 
+    it("correctly queries Authentication.login() endpoint", async() => {
+        const sut = setupClient();
+
+        const { value } = await sut.auth.login();
+        expect(value.status).toBe(200);
+        expect(value).toHaveProperty("user");
+        expect(value).toHaveProperty("token");
+    });
+
+    it("correctly queries Authentication.logout() endpoint", async() => {
+        const sut = setupClient();
+        await sut.auth.login();
+
+        const { value } = await sut.auth.logout();
+        expect(value).toHaveProperty("status");
+        expect(value.status).toBe(200);
+        expect(value).toHaveProperty("message");
+        expect(value.message).toBe("token successfully destroyed");
+    });
+
     it("correctly queries Discover.getPopularFeatures() endpoint", async() => {
         const sut = setupClient();
         const { value } = await sut.discover.getPopularFeatures("es", "tvshow");
