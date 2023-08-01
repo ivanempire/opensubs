@@ -33,6 +33,7 @@ class NetworkRequestHandler {
             });
             return { ok: true, value: networkCall.data };
         } catch (error: any) {
+            console.log(error);
             return { ok: false, error: error };
         }
     }

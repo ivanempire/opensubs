@@ -1,7 +1,6 @@
 import {describe, expect, it} from "@jest/globals";
 import {OpenSubtitles} from "../src";
 
-
 describe("OpenSubtitles", () => {
 
     it("correctly queries Authentication.login() endpoint", async() => {
@@ -74,6 +73,19 @@ describe("OpenSubtitles", () => {
         expect(value.data[0].type).toBe("subtitle");
         expect(value.data[0]).toHaveProperty("id");
         expect(value.data[0]).toHaveProperty("attributes");
+    });
+
+    it("correctly queries Features.findFeatures() endpoint", async() => {
+        const sut = setupClient();
+        await sut.auth.login();
+
+        const { value } = await sut.features.findFeatures({
+            feature_id: 285
+        });
+
+        expect(value).toHaveProperty("data");
+        expect(value.data).toBeInstanceOf(Array);
+        expect(value.data[0].id).toBe("285");
     });
 
     it("correctly queries Information.getSubtitleFormats() endpoint", async() => {

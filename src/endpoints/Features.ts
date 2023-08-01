@@ -1,9 +1,9 @@
 import NetworkRequestHandler from "../core/NetworkRequestHandler";
 import {HttpMethod} from "../core/HttpMethod";
 import {NetworkHeaders} from "../constants/NetworkHeaders";
-import ACCEPT_JSON_EXAMPLE = NetworkHeaders.ACCEPT_JSON_EXAMPLE;
 import { encodeObject } from "../core/utils";
 import {FindFeaturesParams} from "../core/types";
+import ACCEPT_JSON = NetworkHeaders.ACCEPT_JSON;
 
 class Features {
 
@@ -18,7 +18,7 @@ class Features {
             HttpMethod.GET,
             "/features?" + encodeObject(params),
             true,
-            ACCEPT_JSON_EXAMPLE
+            ACCEPT_JSON
         );
     }
 }

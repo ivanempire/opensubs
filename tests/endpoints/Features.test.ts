@@ -5,7 +5,7 @@ import NetworkRequestHandler from "../../src/core/NetworkRequestHandler";
 import {Servers} from "../../src/constants/Servers";
 
 describe("Features", () => {
-    it("correctly queries requestDownload() endpoint", async() => {
+    it("correctly queries findFeatures() endpoint", async() => {
         const sut = new Features(new NetworkRequestHandler(testCredentialManager, Servers.MOCK));
 
         const latestResponse = await sut.findFeatures({
