@@ -12,5 +12,4 @@
     "sourceMap": true,
   },
   "include": ["src/**/*"],
-  "references": []
 }

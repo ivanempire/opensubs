@@ -1,0 +1,10 @@
+tests/
+.github/
+src/
+build.js
+jest.config.js
+sample.env
+tsconfig.json
+tsconfig.tsbuildinfo
+.idea/
+tests.env

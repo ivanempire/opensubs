@@ -1,5 +1,4 @@
 const { glob } = require("glob");
-const { Generator } = require("npm-dts");
 const { build } = require("esbuild");
 
 async function buildESM() {
@@ -13,13 +12,6 @@ async function buildESM() {
     });
 }
 
-async function createTypes() {
-    await new Generator({
-        entry: "src/index.ts",
-        output: "dist/index.d.ts",
-    }).generate();
-}
-
 async function buildCJS() {
     await build({
         entryPoints: glob.sync("src/**/*.ts"),
@@ -30,4 +22,28 @@ async function buildCJS() {
     });
 }
 
-Promise.all([buildESM(), createTypes(), buildCJS()]);
+async function buildIIEF() {
+    await Promise.all([
+        build({
+            entryPoints: ["src/index.ts"],
+            outfile: "dist/index.js",
+            bundle: true,
+            sourcemap: true,
+            platform: "browser",
+            target: "chrome58",
+            globalName: "OpenSubs",
+        }),
+        build({
+            entryPoints: ["src/index.ts"],
+            outfile: "dist/index.min.js",
+            bundle: true,
+            minify: true,
+            sourcemap: true,
+            platform: "browser",
+            target: "chrome58",
+            globalName: "OpenSubs",
+        }),
+    ]);
+}
+
+Promise.all([buildESM(), buildCJS(), buildIIEF()]);
