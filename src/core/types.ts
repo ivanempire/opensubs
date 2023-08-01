@@ -23,3 +23,29 @@ export type FindFeaturesParams = {
     // Filter by year - can only be used in combination with a query
     year?: number
 }
+
+export type FindSubtitlesParams = {
+    ai_translated?: string
+    episode_number?: number
+    foreign_parts_only?: string
+    hearing_impaired?: string
+    id?: number
+    imdb_id?: number
+    languages?: string
+    machine_translated?: string
+    moviehash?: string
+    moviehash_match?: string
+    order_by?: string
+    order_direction?: string
+    page?: number
+    parent_feature_id?: number
+    parent_imdb_id?: number
+    parent_tmdb_id?: number
+    query?: string
+    season_number?: number
+    tmdb_id?: number
+    trusted_sources?: string
+    type?: string
+    user_id?: number
+    year?: number
+}

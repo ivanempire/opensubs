@@ -1,5 +1,9 @@
 import {describe, expect, it} from "@jest/globals";
 import {OpenSubtitles} from "../src";
+import Subtitles from "../src/endpoints/Subtitles";
+import NetworkRequestHandler from "../src/core/NetworkRequestHandler";
+import testCredentialManager from "./core/TestCredentialManager";
+import {Servers} from "../src/constants/Servers";
 
 describe("OpenSubtitles", () => {
 
@@ -124,6 +128,19 @@ describe("OpenSubtitles", () => {
         expect(responseData).toHaveProperty("allowed_downloads");
         expect(responseData).toHaveProperty("remaining_downloads");
         expect(responseData).toHaveProperty("allowed_translations");
+    });
+
+    it("correctly queries Subtitles.findSubtitles() endpoint", async() => {
+        const sut = setupClient();
+
+        const { value } = await sut.subtitles.findSubtitles({
+            id: 450
+        });
+        expect(value.page).toBe(1);
+        expect(value.data).toBeInstanceOf(Array);
+        expect(value).toHaveProperty("per_page");
+        expect(value).toHaveProperty("total_pages");
+        expect(value).toHaveProperty("total_count");
     });
 
     it("correctly queries Utilities.guessIt endpoint", async() => {
