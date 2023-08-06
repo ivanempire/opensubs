@@ -1,3 +1,7 @@
+/**
+ * Helper function that converts an object into a URL encoded string of key value pairs.
+ * @param data
+ */
 export const encodeObject = (data: Object): string => {
     const params: string[] = [];
     for (const key in data) {
