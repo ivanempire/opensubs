@@ -1,7 +1,7 @@
 {
   "name": "opensubs",
-  "version": "0.9.2",
-  "description": "An NPM module for calling the OpenSubtitles API",
+  "version": "1.0.0",
+  "description": "A modern NPM library for calling the OpenSubtitles API",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/types/index.d.ts",

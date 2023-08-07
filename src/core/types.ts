@@ -29,7 +29,7 @@ export type RequestDownloadParams = {
 }
 
 /**
- * Request parameters for findFeatures() call
+ * Request parameters for findFeatures() call.
  */
 export type FindFeaturesParams = {
     // OpenSubtitles feature_id

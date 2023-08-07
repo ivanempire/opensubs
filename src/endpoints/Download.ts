@@ -18,8 +18,8 @@ class Download {
 
     /**
      * Request the download URL for a certain subtitle. Subtitle file in the temporary URL will be UTF-8 encoded.
-     * @param requestParams {RequestDownloadParams} to use for the download request
-     * @return {Result} wrapped response from requestDownload endpoint
+     * @param requestParams {RequestDownloadParams} to use for the download request.
+     * @return {Result} wrapped response from requestDownload endpoint.
      */
     requestDownload = async(requestParams: RequestDownloadParams): Promise<any> => {
         return await this.networkRequestHandler.performNetworkCall(

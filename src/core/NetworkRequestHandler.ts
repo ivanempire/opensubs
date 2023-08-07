@@ -29,6 +29,7 @@ class NetworkRequestHandler {
      * @param includeApiKey Flag indicating if the API key should be included in the headers.
      * @param headers Object of all headers to include in the request.
      * @param data Data object to send in the body of the request.
+     * @return {Result} wrapped response from all endpoint requests.
      */
     performNetworkCall = async(httpMethod: HttpMethods, endpoint: string, includeApiKey: boolean, headers: object, data?: object): Promise<Result<any>> => {
         const requestHeaders = {

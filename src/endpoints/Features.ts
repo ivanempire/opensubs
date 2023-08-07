@@ -15,7 +15,7 @@ class Features {
 
     /**
      * Search for a feature from a given text input.
-     * @param requestParams {FindFeaturesParams} to use for the find features request
+     * @param requestParams {FindFeaturesParams} to use for the find features request.
      * @return {Result} wrapped response from findFeatures endpoint.
      */
     findFeatures = async(requestParams: FindFeaturesParams): Promise<any> => {
