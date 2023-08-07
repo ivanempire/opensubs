@@ -1,7 +1,7 @@
-import { HttpMethod } from "../core/HttpMethod";
 import { NetworkHeaders } from "../constants/NetworkHeaders";
 import ACCEPT_JSON = NetworkHeaders.ACCEPT_JSON;
 import NetworkRequestHandler from "../core/NetworkRequestHandler";
+import {HttpMethods} from "../core/types";
 
 class Utilities {
 
@@ -11,9 +11,14 @@ class Utilities {
         this.networkRequestHandler = networkRequestHandler;
     }
 
+    /**
+     * Guess the feature based on the provided filename.
+     * @param filename The filename to use during guessing.
+     * @return {Result} wrapped response from guessIt endpoint.
+     */
     guessIt = async(filename: string): Promise<any> => {
         return await this.networkRequestHandler.performNetworkCall(
-            HttpMethod.GET,
+            HttpMethods.GET,
             "/utilities/guessit?filename=" + encodeURIComponent(filename),
             true,
             {

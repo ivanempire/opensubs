@@ -1,5 +1,4 @@
-import { Result } from "../core/Result";
-import { HttpMethod } from "../core/HttpMethod";
+import {HttpMethods, Result} from "../core/types";
 import CredentialManager from "../core/CredentialManager";
 import { NetworkHeaders } from "../constants/NetworkHeaders";
 import ACCEPT_JSON = NetworkHeaders.ACCEPT_JSON;
@@ -16,11 +15,15 @@ class Authentication {
         this.networkRequestHandler = networkRequestHandler;
     }
 
+    /**
+     * Log the current user in to set the JWT.
+     * @return {Result} wrapped response from login endpoint
+     */
     async login(): Promise<any> {
         const userCredentials = this.credentialManager.getUserCredentials();
         try {
             const loginResponse: Result<any> = await this.networkRequestHandler.performNetworkCall(
-                HttpMethod.POST,
+                HttpMethods.POST,
                 "/login",
                 true,
                 {
@@ -41,10 +44,14 @@ class Authentication {
         }
     }
 
+    /**
+     * Log the current user out and reset the JWT.
+     * @return {Result} wrapped response from logout endpoint
+     */
     async logout(): Promise<any> {
         try {
             const logoutResponse: Result<any> = await this.networkRequestHandler.performNetworkCall(
-                HttpMethod.DELETE,
+                HttpMethods.DELETE,
                 "/logout",
                 true,
                 {

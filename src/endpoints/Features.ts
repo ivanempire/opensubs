@@ -1,5 +1,5 @@
 import NetworkRequestHandler from "../core/NetworkRequestHandler";
-import {HttpMethod} from "../core/HttpMethod";
+import {HttpMethods} from "../core/types";
 import {NetworkHeaders} from "../constants/NetworkHeaders";
 import { encodeObject } from "../core/utils";
 import {FindFeaturesParams} from "../core/types";
@@ -13,10 +13,15 @@ class Features {
         this.networkRequestHandler = networkRequestHandler;
     }
 
-    findFeatures = async(params: FindFeaturesParams): Promise<any> => {
+    /**
+     * Search for a feature from a given text input.
+     * @param requestParams {FindFeaturesParams} to use for the find features request
+     * @return {Result} wrapped response from findFeatures endpoint.
+     */
+    findFeatures = async(requestParams: FindFeaturesParams): Promise<any> => {
         return await this.networkRequestHandler.performNetworkCall(
-            HttpMethod.GET,
-            "/features?" + encodeObject(params),
+            HttpMethods.GET,
+            "/features?" + encodeObject(requestParams),
             true,
             ACCEPT_JSON
         );

@@ -1,9 +1,10 @@
-import {HttpMethod} from "../core/HttpMethod";
+import {HttpMethods} from "../core/types";
 import { NetworkHeaders } from "../constants/NetworkHeaders";
 import ACCEPT_JSON = NetworkHeaders.ACCEPT_JSON;
 import NetworkRequestHandler from "../core/NetworkRequestHandler";
 import CredentialManager from "../core/CredentialManager";
 import CONTENT_TYPE_JSON = NetworkHeaders.CONTENT_TYPE_JSON;
+import { RequestDownloadParams } from "../core/types";
 
 class Download {
 
@@ -15,9 +16,14 @@ class Download {
         this.networkRequestHandler = networkRequestHandler;
     }
 
+    /**
+     *
+     * @param requestParams {RequestDownloadParams} to use for the download request
+     * @return {Result} wrapped response from requestDownload endpoint
+     */
     requestDownload = async(requestParams: RequestDownloadParams): Promise<any> => {
         return await this.networkRequestHandler.performNetworkCall(
-            HttpMethod.POST,
+            HttpMethods.POST,
             "/download",
             true,
             {
@@ -28,16 +34,6 @@ class Download {
             requestParams
         );
     }
-}
-
-type RequestDownloadParams = {
-    file_id: number
-    sub_format?: string
-    file_name?: string
-    in_fps?: number
-    out_fps?: number
-    timeshift?: number
-    force_download?: boolean
 }
 
 export default Download;

@@ -9,6 +9,9 @@ import NetworkRequestHandler from "./core/NetworkRequestHandler";
 import {Servers} from "./constants/Servers";
 import Utilities from "./endpoints/Utilities";
 
+/**
+ * Main wrapper for the opensubs library - exported to the consumers.
+ */
 export class OpenSubtitles {
 
     info: Information

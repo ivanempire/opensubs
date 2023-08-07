@@ -1,9 +1,12 @@
 import axios from "axios";
-import { HttpMethod } from "./HttpMethod";
 import CredentialManager from "./CredentialManager";
-import {Result} from "./Result";
 import {Servers} from "../constants/Servers";
+import {HttpMethods, Result} from "./types";
 
+/**
+ * Responsible for calling the OpenSubtitles API. Every library method is a fancy wrapper
+ * around this class in order to pass in the necessary information.
+ */
 class NetworkRequestHandler {
 
     private credentialManager: CredentialManager;
@@ -18,7 +21,16 @@ class NetworkRequestHandler {
         }
     }
 
-    performNetworkCall = async(httpMethod: HttpMethod, endpoint: string, includeApiKey: boolean, headers: object, data?: object): Promise<Result<any>> => {
+    /**
+     * Perform the actual network request, and wrap the return object into a Result type.
+     *
+     * @param httpMethod {HttpMethods} To use for the API call.
+     * @param endpoint OpenSubtitles API endpoint to call, starts with a slash.
+     * @param includeApiKey Flag indicating if the API key should be included in the headers.
+     * @param headers Object of all headers to include in the request.
+     * @param data Data object to send in the body of the request.
+     */
+    performNetworkCall = async(httpMethod: HttpMethods, endpoint: string, includeApiKey: boolean, headers: object, data?: object): Promise<Result<any>> => {
         const requestHeaders = {
             ...headers,
             "Api-Key": includeApiKey ? this.credentialManager.getUserCredentials().apiKey : undefined,
