@@ -5,3 +5,4 @@ dist/
 .yarnrc.yml
 tests.env
 coverage/
+tsconfig.tsbuildinfo
