@@ -7,9 +7,9 @@
 ![build](https://github.com/ivanempire/opensubs/actions/workflows/continuous.yml/badge.svg)
 
 <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="banner-light.png" width="800px">
-    <source media="(prefers-color-scheme: light)" srcset="banner-dark.png" width="800px">
-    <img src="banner-light.png" alt="Opensubs banner" width="800px" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/ivanempire/opensubs/blob/develop/banner-light.png" width="800px">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/ivanempire/opensubs/blob/develop/banner-dark.png" width="800px">
+    <img src="https://github.com/ivanempire/opensubs/blob/develop/banner-light.png" alt="Opensubs banner" width="800px" />
 </picture>
 </div>
 
