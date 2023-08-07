@@ -8,3 +8,5 @@ tsconfig.json
 tsconfig.tsbuildinfo
 .idea/
 tests.env
+banner-dark.png
+banner-light.png
