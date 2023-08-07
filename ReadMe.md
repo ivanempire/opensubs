@@ -4,6 +4,12 @@
 ![license](https://img.shields.io/npm/l/opensubs)
 ![minified size](https://img.shields.io/bundlephobia/minzip/opensubs)
 ![build](https://github.com/ivanempire/opensubs/actions/workflows/continuous.yml/badge.svg)
+
+<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="banner-dark.png" width="800px">
+    <source media="(prefers-color-scheme: light)" srcset="banner-light.png" width="800px">
+    <img src="banner-light.png" alt="Opensubs banner" width="800px" />
+</picture>
 </div>
 
 ### Getting started
@@ -32,21 +38,20 @@ The constructor accepts a 4th optional argument, which specifies which server to
 ### Supported calls
 The spec that was followed during development of this library may be found [here](https://opensubtitles.stoplight.io/), and, in addition to this, I tried to make sure all the function headers/comments were easy to understand (and they included example responses). Below is a table listing all the calls `opensubs` supports at a glance.
 
-| Library call        | Params                         |
-|---------------------|--------------------------------|
-| client.auth.login() | N/A                            |
-| client.auth.login()  | N/A                            |
-| client.auth.logout() | N/A                            |
-| client.info.getSubtitleFormats()  | N/A                            |
-| client.info.getLanguages()  | N/A                            |
-| client.info.getUserInformation()  | N/A                            |
+| Library call        | Params                          |
+|---------------------|---------------------------------|
+| client.auth.login() | N/A                             |
+| client.auth.logout() | N/A                             |
 | client.discover.getPopularFeatures() | languages: string, type: string |
 | client.discover.getLatestSubtitles() | languages: string, type: string |
 | client.discover.getMostDownloaded() | languages: string, type: string |
-| client.download.requestDownload() | RequestDownloadParams          |
-| client.features.findFeatures() | FindFeaturesParams             |
-| client.subtitles.findSubtitles() | FindSubtitlesParams            |
-| client.utilities.guessIt() | FindSubtitlesParams            |
+| client.download.requestDownload() | RequestDownloadParams           |
+| client.features.findFeatures() | FindFeaturesParams              |
+| client.info.getSubtitleFormats()  | N/A                             |
+| client.info.getLanguages()  | N/A                             |
+| client.info.getUserInformation()  | N/A                             |
+| client.subtitles.findSubtitles() | FindSubtitlesParams             |
+| client.utilities.guessIt() | filename: string                |
 
 
 ### Testing

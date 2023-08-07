@@ -17,7 +17,7 @@ class Download {
     }
 
     /**
-     *
+     * Request the download URL for a certain subtitle. Subtitle file in the temporary URL will be UTF-8 encoded.
      * @param requestParams {RequestDownloadParams} to use for the download request
      * @return {Result} wrapped response from requestDownload endpoint
      */
